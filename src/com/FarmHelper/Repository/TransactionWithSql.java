@@ -16,6 +16,7 @@ public class TransactionWithSql implements UserDataTransaction {
     private Connection con;
     private MySqlDBSelect mySqlDBSelect = new MySqlDBSelect();
     private ResultSet resultSet;
+
     public TransactionWithSql(){
         MySqlDBCon mySqlDBCon = new MySqlDBCon();
         mySqlDBCon.ConnectToMySqlDB("Farm-Helper","root","sky1997");
@@ -46,10 +47,16 @@ public class TransactionWithSql implements UserDataTransaction {
     @Override
     public List<DataEntry> getAllEntries(User user) {
         List<DataEntry> allEntries = new ArrayList<>();
-
+        DataEntry dataEntry;
         resultSet = mySqlDBSelect.SelectFromTable("Entries","*","Where username='"+user.getUsername()+"'");
         try {
-            if(resultSet.next()){
+            while(resultSet.next()){
+                dataEntry = new DataEntry();
+                dataEntry.setEntryID(resultSet.getString("entryID"));
+                dataEntry.setVarietyName(resultSet.getString("varietyName"));
+                dataEntry.setEntryDate(resultSet.getDate("entryDate"));
+                dataEntry.setAmount(resultSet.getInt("amount"));
+                allEntries.add(dataEntry);
             }
         } catch (SQLException e) {
             e.printStackTrace();
