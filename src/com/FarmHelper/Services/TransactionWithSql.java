@@ -69,19 +69,20 @@ public class TransactionWithSql implements UserDataTransaction {
     }
 
     @Override
-    public HashMap<String, Integer> calculateTotalAmountPerVariety() {
-        HashMap<String,Integer> calcMap = new HashMap<>();
-        resultSet = mySqlDBSelect.selectFromTable("Entries","varietyname,SUM(amount) as total","Where username='"+user.getUsername()+"' group by varietyname");
-
+    public DataEntry calculateTotalAmountForExactVariety(String varietyName,String pack) {
+        resultSet = mySqlDBSelect.selectFromTable("entries inner join fruits on entries.fruitid=fruits.fruitid","name,SUM(amount) as total","Where username='1' and name='"+varietyName+"' and packagetype='"+pack+"'");
+        DataEntry entry = new DataEntry();
         try {
             while (resultSet.next()){
-                calcMap.put(resultSet.getString("varietyName"),resultSet.getInt("total"));
+                entry = new DataEntry();
+                entry.setAmount(resultSet.getInt("total"));
+                entry.setVarietyName(resultSet.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return calcMap;
+        return entry;
     }
     @Override
     public void addNewRegistry(DataEntry entry){
@@ -97,7 +98,7 @@ public class TransactionWithSql implements UserDataTransaction {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        mySqlDBInsert.InsertIntoMySqlTable("insert into entries values ('"+entry.getEntryID() +"','"+fruitID+ "'," +entry.getAmount() + ",'1','" +entry.getEntryDate() +"')");
+        mySqlDBInsert.InsertIntoMySqlTable("insert into entries values ('"+entry.getEntryID() +"','"+fruitID+ "'," +entry.getAmount() + ",'1','" +entry.getEntryDate() +"','"+entry.getTypeOfPackage() +"')");
     }
 
     @Override
@@ -134,5 +135,22 @@ public class TransactionWithSql implements UserDataTransaction {
         }
         return list;
 
+    }
+
+    @Override
+    public List<String> getFruitsPackage() {
+        List<String> list = new ArrayList<>();
+
+        try {
+            resultSet = mySqlDBSelect.selectFromTable("package","type"," ");
+            while (resultSet.next()){
+                list.add(resultSet.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return list;
     }
 }

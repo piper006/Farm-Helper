@@ -10,8 +10,10 @@ public interface UserDataTransaction {
 
     boolean verifyUserLoginData();
     List<DataEntry> getAllEntries();
-    HashMap<String,Integer> calculateTotalAmountPerVariety();
+    DataEntry calculateTotalAmountForExactVariety(String varietyName,String pack);
     void addNewRegistry(DataEntry entry);
     List<String> getFruitsNames(String typeOfFruits);
     List<String> getFruitsTypes();
+    List<String> getFruitsPackage();
+
 }

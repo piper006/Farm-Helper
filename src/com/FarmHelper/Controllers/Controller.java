@@ -18,18 +18,6 @@ public class Controller {
 
         User user = new User("1","1");
         UserDataTransaction userDataTransaction = new TransactionWithSql(user);
-        /*list= userDataTransaction.getAllEntries();
-        for(Map.Entry<String,Integer> entry : userDataTransaction.calculateTotalAmountPerVariety().entrySet()){
-        System.out.println(entry.getKey() + " :" +entry.getValue());
-        }*/
-
-        DataEntry entry = new DataEntry();
-        entry.setAmount(45);
-        entry.setVarietyName("Scarlet");
-        //userDataTransaction.addNewRegistry(entry);
-        for(Map.Entry<String,Integer> entry1 : userDataTransaction.calculateTotalAmountPerVariety().entrySet()){
-            System.out.println(entry1.getKey() + ": " + entry1.getValue());
-        }
 
     }
 

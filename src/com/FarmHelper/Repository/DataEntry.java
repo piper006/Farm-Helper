@@ -14,6 +14,16 @@ public class DataEntry {
     private int amount;
     private String entryDate;
 
+    public String getTypeOfPackage() {
+        return typeOfPackage;
+    }
+
+    public void setTypeOfPackage(String typeOfPackage) {
+        this.typeOfPackage = typeOfPackage;
+    }
+
+    private String typeOfPackage;
+
     public TypeOfFruits getTypeOfFruits() {
         return typeOfFruits;
     }

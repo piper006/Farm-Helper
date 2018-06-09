@@ -32,7 +32,7 @@ public class UserLoginForm {
         if(userDataTransaction.verifyUserLoginData()) {
             NewEntryForm newEntryForm = new NewEntryForm();
 
-            URL url = new File("src/com/FarmHelper/UI/NewEntryForm.fxml").toURL();
+            URL url = new File("src/com/FarmHelper/UI/ShowEntriesForm.fxml").toURL();
             Parent homePage = FXMLLoader.load(url);
 
             //Parent homePage = FXMLLoader.load(getClass().getResource("/UI/mainWindow.fxml"));
