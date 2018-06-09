@@ -19,7 +19,8 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Button layoutX="74.0" layoutY="88.0" mnemonicParsing="false" onAction="#onClick" text="Button" />
+            <Button layoutX="46.0" layoutY="118.0" mnemonicParsing="false" onAction="#onClick" text="ShowTotalAmounts" />
+            <Button layoutX="66.0" layoutY="48.0" mnemonicParsing="false" onAction="#showAllEntries" text="ShowAllEntries" />
          </children>
       </AnchorPane>
    </children>

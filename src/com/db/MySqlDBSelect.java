@@ -14,7 +14,7 @@ public class MySqlDBSelect {
      * @param Extras    Any other extra sql query code you want to put.. Example(Where field='admin',Group By age,etc)
      * @return          Returns the result of the executed query ResultSet type
      */
-    public ResultSet SelectFromTable(String TableName , String Fields , String Extras){
+    public ResultSet selectFromTable(String TableName , String Fields , String Extras){
 
         try {
             st = con.createStatement();
