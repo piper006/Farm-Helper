@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="503.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.FarmHelper.Controllers.ShowEntriesForm">
+   <children>
+      <ChoiceBox fx:id="packageSelection" layoutX="225.0" layoutY="169.0" prefWidth="150.0" />
+      <Label layoutX="225.0" layoutY="218.0" text="Συνολο">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalAmount" layoutX="337.0" layoutY="218.0" text="0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="fruitSelection" layoutX="225.0" layoutY="67.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="varietySelection" layoutX="225.0" layoutY="118.0" prefWidth="150.0" />
+      <TableView fx:id="tableView" layoutX="112.0" layoutY="252.0" prefHeight="200.0" prefWidth="377.0">
+        <columns>
+          <TableColumn fx:id="col_name" prefWidth="75.0" text="Ποικιλία" />
+            <TableColumn fx:id="col_pack" prefWidth="75.0" text="Συσκευασία" />
+            <TableColumn fx:id="col_amount" prefWidth="75.0" text="Ποσότητα" />
+            <TableColumn fx:id="col_date" prefWidth="152.0" text="Ημερομηνία Εγγραφης" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

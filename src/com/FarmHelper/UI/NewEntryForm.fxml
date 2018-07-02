@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.FarmHelper.Controllers.NewEntryForm">
+   <children>
+      <Button fx:id="submitButton" layoutX="309.0" layoutY="333.0" mnemonicParsing="false" onAction="#submitNewEntry" text="Εισαγωγή">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField fx:id="amountField" layoutX="260.0" layoutY="282.0" />
+      <Label layoutX="218.0" layoutY="39.0" text="Εισαγωγη Νεας Εγγραφης">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="163.0" layoutY="282.0" text="Ποσοτητα">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="varietySelection" layoutX="259.0" layoutY="170.0" prefWidth="150.0" />
+      <Label layoutX="115.0" layoutY="170.0" text="Επιλογη Ποικιλιας">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="fruitSelection" layoutX="259.0" layoutY="115.0" prefWidth="150.0" />
+      <Label layoutX="116.0" layoutY="115.0" text="Επιλογη Φρουτου">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="packageSelection" layoutX="257.0" layoutY="226.0" prefWidth="150.0" />
+      <Label layoutX="113.0" layoutY="226.0" text="Επιλογη Tυπου">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
