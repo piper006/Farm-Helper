@@ -12,6 +12,11 @@ public class DataEntry {
     private String entryID;
     private String varietyName;
     private int amount;
+
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
+    }
+
     private String entryDate;
 
     public String getTypeOfPackage() {

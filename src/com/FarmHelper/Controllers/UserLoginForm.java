@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,7 +34,7 @@ public class UserLoginForm {
         if(userDataTransaction.verifyUserLoginData()) {
             NewEntryForm newEntryForm = new NewEntryForm();
 
-            URL url = new File("src/com/FarmHelper/UI/ShowEntriesForm.fxml").toURL();
+            URL url = new File("src/com/FarmHelper/UI/NewEntryForm.fxml").toURL();
             Parent homePage = FXMLLoader.load(url);
 
             //Parent homePage = FXMLLoader.load(getClass().getResource("/UI/mainWindow.fxml"));
@@ -41,8 +43,12 @@ public class UserLoginForm {
             nextStage.setScene(homeScene);
             nextStage.show();
         }
-        else{
-            System.out.println("Wrong username or password.Please try again!");
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Προβλημα συνδεσης");
+            alert.setHeaderText("Λαθος ονομα χρηστη ή κωδικος.\nΠροσπαθηστε ξανα!!!");
+            alert.setContentText("*ΣΗΜΕΙΩΣΗ : Παρακαλω ελενξτε την γλωσσα στην οποια πληκτρολογειτε");
+            alert.showAndWait();
         }
 
 

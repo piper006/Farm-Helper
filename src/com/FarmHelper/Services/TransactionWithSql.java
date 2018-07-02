@@ -1,16 +1,20 @@
 package com.FarmHelper.Services;
 
 import com.FarmHelper.Repository.DataEntry;
+import com.FarmHelper.Repository.TypeOfFruits;
 import com.FarmHelper.User;
 import com.db.MySqlDBCon;
 import com.db.MySqlDBInsert;
 import com.db.MySqlDBSelect;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class TransactionWithSql implements UserDataTransaction {
@@ -150,6 +154,33 @@ public class TransactionWithSql implements UserDataTransaction {
             e.printStackTrace();
         }
 
+
+        return list;
+    }
+
+    @Override
+    public ObservableList<DataEntry> getEntries(String varType,String packType) {
+        ObservableList<DataEntry> list = FXCollections.observableArrayList();
+        List<DataEntry> stringList = new ArrayList<>();
+        DataEntry entry ;
+        resultSet = mySqlDBSelect.selectFromTable("entries inner join fruits on entries.fruitid=fruits.fruitid"," name,type ,packagetype ,Amount ,EntryDate","where name='"+varType+"' and packagetype='"+packType+"' order by name");
+        try {
+            while (resultSet.next()){
+                entry = new DataEntry();
+                TypeOfFruits typeOfFruits = new TypeOfFruits();
+                typeOfFruits.setTypeName(resultSet.getString("type"));
+                entry.setVarietyName(resultSet.getString("name"));
+                entry.setAmount(resultSet.getInt("amount"));
+                entry.setEntryDate((resultSet.getDate("entrydate")).toString());
+                entry.setTypeOfPackage(resultSet.getString("packagetype"));
+                entry.setTypeOfFruits(typeOfFruits);
+
+                stringList.add(entry);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        list.addAll(stringList);
 
         return list;
     }

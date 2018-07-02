@@ -1,6 +1,8 @@
 package com.FarmHelper.Services;
 
 import com.FarmHelper.Repository.DataEntry;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -15,5 +17,7 @@ public interface UserDataTransaction {
     List<String> getFruitsNames(String typeOfFruits);
     List<String> getFruitsTypes();
     List<String> getFruitsPackage();
+    ObservableList<DataEntry> getEntries(String varType,String packType);
+
 
 }
